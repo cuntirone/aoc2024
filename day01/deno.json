@@ -1,0 +1,4 @@
+{
+  "name": "@aoc/day01",
+  "exports": "./day01.ts"
+}

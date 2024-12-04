@@ -1,0 +1,18 @@
+{
+  "tasks": {
+    "dev": "deno run --watch main.ts"
+  },
+  "workspace": [
+    "./day01",
+    "./utils"
+  ],
+  "imports": {
+    "@std/assert": "jsr:@std/assert@1"
+  },
+  "fmt": {
+    "singleQuote": false,
+    "semiColons": true,
+    "useTabs": false,
+    "lineWidth": 160
+  }
+}

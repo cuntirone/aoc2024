@@ -1,0 +1,4 @@
+{
+    "name": "@aoc/utils",
+    "exports": "./readFile.ts"
+}
