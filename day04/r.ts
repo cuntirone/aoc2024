@@ -1,15 +1,6 @@
 import { input } from "./input.ts";
 import { sample } from "./sample.ts";
 
-const readRows = (input: string) => {
-  return input.split("\n").join("|");
-};
-
-const readColumns = (input: string) => {
-  const columnCount = input.indexOf("\n");
-  const rows = input.split("\n");
-};
-
 const readH = (
   input: string[][],
   row: number,
