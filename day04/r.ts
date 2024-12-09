@@ -10,7 +10,6 @@ const readH = (
   if (col > (bound - 1 - 3)) {
     return false;
   }
-
   return (input[row][col] === "X" && input[row][col + 1] === "M" && input[row][col + 2] === "A" && input[row][col + 3] === "S") ||
     (input[row][col] === "S" && input[row][col + 1] === "A" && input[row][col + 2] === "M" && input[row][col + 3] === "X");
 };
@@ -130,7 +129,7 @@ const r2 = (input: string) => {
 if (import.meta.main) {
   console.time();
   //   r2(sample);
-  //   r(input);
+  r(input);
   r2(input);
   console.timeEnd();
 }
