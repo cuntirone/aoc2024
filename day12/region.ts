@@ -43,22 +43,22 @@ export class region {
     const perimeterLength = this.plants.reduce((sum, plant, _index, all) => {
       let left = plant.p & side.Left ? 1 : 0;
       if (part2 && left && all.some((other) => other.r === plant.r - 1 && other.c === plant.c && other.p & side.Left)) {
-        // there is no plant above with a perimeter also on the left side
+        // there is a plant above with a perimeter also on the left side
         left = 0;
       }
       let right = plant.p & side.Right ? 1 : 0;
       if (part2 && right && all.some((other) => other.r === plant.r - 1 && other.c === plant.c && other.p & side.Right)) {
-        // there is no plant above with a perimeter also on the right side
+        // there is a plant above with a perimeter also on the right side
         right = 0;
       }
       let up = plant.p & side.Up ? 1 : 0;
       if (part2 && up && all.some((other) => other.r === plant.r && other.c === plant.c - 1 && other.p & side.Up)) {
-        // there is no plant to the left with a perimeter also on the top side
+        // there is a plant to the left with a perimeter also on the top side
         up = 0;
       }
       let down = plant.p & side.Down ? 1 : 0;
       if (part2 && down && all.some((other) => other.r === plant.r && other.c === plant.c - 1 && other.p & side.Down)) {
-        // there is no plant to the left with a perimeter also on the bottom side
+        // there is a plant to the left with a perimeter also on the bottom side
         down = 0;
       }
       sum += left + right + up + down;
