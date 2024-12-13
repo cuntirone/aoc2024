@@ -1,17 +1,14 @@
 import { input } from "./input.ts";
 import { region } from "./region.ts";
 import { sample } from "./sample.ts";
+import { side } from "./side.ts";
 
-const r = (input: string, arg1: string) => {
+const r = (input: string, part2: boolean) => {
   const field = input.split("\n").map((line) => line.split(""));
   const regions = scout(field);
   let score = 0;
   regions.forEach((region) => {
-    if (arg1 === region.plant) {
-      console.log(region, region.plants.length, region.score());
-    }
-
-    score += region.score();
+    score += region.score(part2);
   });
   console.log(regions.length);
   console.log(score);
@@ -22,19 +19,19 @@ const scout = (field: string[][]): region[] => {
   const regions: region[] = [];
   field.forEach((row, r) => {
     row.forEach((cell: string, c: number) => {
-      let perimeterScore = 0;
+      let perimeterScore = side.None;
 
       if (r === 0 || field[r - 1][c] !== cell) {
-        perimeterScore++;
+        perimeterScore |= side.Up;
       }
       if (r === bounds || field[r + 1][c] !== cell) {
-        perimeterScore++;
+        perimeterScore |= side.Down;
       }
       if (c === 0 || field[r][c - 1] !== cell) {
-        perimeterScore++;
+        perimeterScore |= side.Left;
       }
       if (c === bounds || field[r][c + 1] !== cell) {
-        perimeterScore++;
+        perimeterScore |= side.Right;
       }
 
       let belongs = [];
@@ -59,12 +56,8 @@ const scout = (field: string[][]): region[] => {
   return regions;
 };
 
-const printField = (field: string[][], highlight?: region) => {
-  console.log(field.map((row) => row.join("")).join("\n"), "\n\n");
-};
-
 if (import.meta.main) {
   console.time();
-  r(input, Deno.args[0]);
+  r(input, !!parseInt(Deno.args[0]));
   console.timeEnd();
 }
